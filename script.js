@@ -1,7 +1,10 @@
-const playerRed = "R", playerYellow = "Y";
-let currPlayer = playerRed, currColumns;
+const playerRed = "R",
+    playerYellow = "Y";
+let currPlayer = playerRed,
+    currColumns;
 
-const columns = 7, rows = 6;
+const columns = 7,
+    rows = 6;
 let board;
 
 window.onload = () => setGame();
@@ -19,7 +22,7 @@ const setGame = () => {
             tile.id = r + " " + c;
             tile.className = "tile";
             tile.onclick = setPiece;
-            document.getElementById("bord").appendChild(tile);
+            document.getElementById("board").appendChild(tile);
         }
 
         board.push(row);
@@ -32,7 +35,8 @@ const setPiece = function() {
     if (gameOver) return;
 
     const coords = this.id.split(" ");
-    let r = parseInt(coords[0]), c = parseInt(coords[1]);
+    let r = parseInt(coords[0]),
+        c = parseInt(coords[1]);
 
     r = currColumns[c];
     if (r < 0) return;
@@ -97,9 +101,9 @@ const checkWinner = () => {
 function setWinner(r, c) {
     let winner = document.getElementById("winner");
     if (board[r][c] == playerRed) {
-        winner.canvas = "Red Wins";
+        winner.textContent = "Red Wins";
     } else {
-        winner.canvas = "Yellow Wins";
+        winner.textContent = "Yellow Wins";
     }
     gameOver = true;
 }
